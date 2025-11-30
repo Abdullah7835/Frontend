@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dreamy.so | Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+</head>
+<body>
+    <div class="ambient-light">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <canvas id="stars"></canvas>
+    </div>
+
+    <nav>
+        <a href="index.html" class="logo">✦ Dreamy.so</a>
+        <div class="nav-links">
+            <a href="showcase.html">Showcase</a>
+            <a href="blog.html">Blog</a>
+        </div>
+        <button class="nav-btn" onclick="googleLogin()">Sign In</button>
+    </nav>
+
+    <div style="height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 2rem;">
+        <div style="margin-bottom: 2rem; padding: 6px 16px; border-radius: 50px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #2DD4BF; font-size: 0.9rem;">
+            ✦ v2.0 is live
+        </div>
+        <h1 style="font-size: clamp(3rem, 6vw, 5rem); line-height: 1.1; margin-bottom: 1.5rem; background: linear-gradient(to bottom, #fff, #aaa); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+            Turn imagination into <br> websites in seconds
+        </h1>
+        <p style="color: var(--text-muted); font-size: 1.2rem; max-width: 600px; margin-bottom: 2.5rem;">
+            Dreamy is the AI-powered builder that understands your vision. Login to start building instantly.
+        </p>
+        <button class="nav-btn" style="padding: 1rem 2.5rem; background: white; color: black; font-weight: 600; font-size: 1.1rem;" onclick="googleLogin()">Start Building Free</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
