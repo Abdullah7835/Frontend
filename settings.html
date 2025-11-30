@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dreamy.so | Settings</title>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+</head>
+<body class="auth-loading">
+    <div class="ambient-light"><div class="orb orb-2"></div><canvas id="stars"></canvas></div>
+
+    <nav>
+        <div class="logo">✦ Dreamy Builder</div>
+        <div style="display: flex; gap: 1rem; align-items: center;">
+            <button class="nav-btn" onclick="window.location.href='dashboard.html'">Back to Builder</button>
+            <div id="userDisplay"></div>
+        </div>
+    </nav>
+
+    <div class="page-container">
+        <h1>Settings</h1>
+        <p style="color: var(--text-muted); margin-bottom: 2rem;">Manage your account and preferences.</p>
+
+        <div class="settings-layout">
+            <div class="settings-sidebar">
+                <a href="#" class="sidebar-link active">General</a>
+                <a href="#" class="sidebar-link">Billing & Plans</a>
+                <a href="#" class="sidebar-link">API Keys</a>
+                <a href="#" class="sidebar-link">Notifications</a>
+            </div>
+
+            <div class="settings-content">
+                <div class="form-group">
+                    <label>Display Name</label>
+                    <input type="text" class="form-input" placeholder="Your Name" value="Dreamy User">
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" class="form-input" placeholder="email@example.com" disabled style="opacity: 0.5;">
+                </div>
+                <div class="form-group">
+                    <label>OpenAI / Gemini API Key (Optional)</label>
+                    <input type="password" class="form-input" placeholder="sk-...">
+                    <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 5px;">If you want to use your own keys.</p>
+                </div>
+                <button class="save-btn">Save Changes</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
