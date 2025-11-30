@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dreamy.so | Blog</title>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+</head>
+<body>
+    <div class="ambient-light"><div class="orb orb-2"></div><canvas id="stars"></canvas></div>
+
+    <nav>
+        <a href="index.html" class="logo">✦ Dreamy.so</a>
+        <div class="nav-links">
+            <a href="showcase.html">Showcase</a>
+            <a href="blog.html" class="active">Blog</a>
+        </div>
+        <button class="nav-btn" onclick="googleLogin()">Sign In</button>
+    </nav>
+
+    <div class="page-container">
+        
+        <div class="showcase-header">
+            <h1>Engineering & Design</h1>
+            <p style="color: var(--text-muted);">Thoughts on AI, generative UI, and the future of web.</p>
+        </div>
+
+        <!-- Featured Post -->
+        <div class="blog-featured">
+            <div class="featured-image"></div>
+            <div class="featured-content">
+                <span class="date">October 12, 2025</span>
+                <h2 style="font-size: 2rem; margin-bottom: 1rem; line-height: 1.2;">The End of Drag-and-Drop: Why Generative UI is the Future</h2>
+                <p style="color: var(--text-muted); line-height: 1.6; margin-bottom: 1.5rem;">
+                    We are moving from manually positioning pixels to describing intentions. Here is how Dreamy's v2.0 engine parses natural language into semantic HTML.
+                </p>
+                <a href="#" class="read-btn">Read Article ➜</a>
+            </div>
+        </div>
+
+        <!-- Grid Posts -->
+        <div class="showcase-grid">
+            <div class="project-card">
+                <div class="card-content">
+                    <span class="date">Sep 28, 2025</span>
+                    <h3>Optimizing WebGL for 60fps</h3>
+                    <p>How we render millions of particles without lagging your browser.</p>
+                    <a href="#" class="read-btn" style="font-size: 0.9rem; margin-top: 1rem;">Read ➜</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="card-content">
+                    <span class="date">Sep 15, 2025</span>
+                    <h3>From React to Pure HTML</h3>
+                    <p>Why we allow exporting to vanilla JS/HTML for maximum performance.</p>
+                    <a href="#" class="read-btn" style="font-size: 0.9rem; margin-top: 1rem;">Read ➜</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="card-content">
+                    <span class="date">Aug 10, 2025</span>
+                    <h3>Design Systems for AI</h3>
+                    <p>Teaching an LLM how to respect whitespace and typography scales.</p>
+                    <a href="#" class="read-btn" style="font-size: 0.9rem; margin-top: 1rem;">Read ➜</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
