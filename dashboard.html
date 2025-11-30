@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dreamy.so | Builder</title>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+</head>
+<body class="auth-loading">
+    <div class="ambient-light"><div class="orb orb-1"></div><canvas id="stars"></canvas></div>
+
+    <nav>
+        <div class="logo">✦ Dreamy Builder</div>
+        <div style="display: flex; gap: 1rem; align-items: center;">
+            <div id="userDisplay"></div>
+            
+            <div class="settings-container">
+                <button id="settingsBtn" class="icon-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                </button>
+                <div id="settingsMenu" class="dropdown-menu">
+                    <!-- FIXED LINK HERE -->
+                    <a href="settings.html" class="dropdown-item">Settings</a> 
+                    <a href="#" class="dropdown-item">Billing</a>
+                    <div style="height:1px; background:rgba(255,255,255,0.1); margin:5px 0;"></div>
+                    <div class="dropdown-item" style="color:#ef4444;" onclick="logout()">Sign Out</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-container" style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 80vh;">
+        
+        <div id="emptyState" style="text-align: center; max-width: 700px; width: 100%;">
+            <h1 style="font-size: 3rem; margin-bottom: 1rem;">What are we building?</h1>
+            <p style="color: var(--text-muted); margin-bottom: 2rem;">Describe your website in detail. I'll handle the code.</p>
+            <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 1rem; display: flex; align-items: flex-end; gap: 10px;">
+                <textarea id="promptInput" placeholder="A modern portfolio for a photographer..." style="width: 100%; background: transparent; border: none; color: white; resize: none; outline: none; height: 60px; font-size: 1.1rem;"></textarea>
+                <button id="generateBtn" style="width: 45px; height: 45px; border-radius: 10px; background: linear-gradient(135deg, #2DD4BF, #A855F7); border: none; color: white; cursor: pointer; display: flex; align-items: center; justify-content: center;">➜</button>
+            </div>
+        </div>
+
+        <div id="loadingState" class="hidden" style="text-align: center;">
+            <div class="loader" style="width: 50px; height: 50px; border: 3px solid rgba(255,255,255,0.1); border-top-color: #A855F7; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 1rem;"></div>
+            <p style="color: #A855F7; animation: pulse 1.5s infinite;">Dreaming up your code...</p>
+        </div>
+
+        <div id="resultState" class="hidden" style="width: 100%; max-width: 1200px; height: 80vh; background: #1a1a2e; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column;">
+            <div style="padding: 10px 20px; background: #2a2a3e; display: flex; justify-content: space-between; align-items: center;">
+                <div style="display: flex; gap: 8px;"><div style="width:10px;height:10px;border-radius:50%;background:#ef4444;"></div><div style="width:10px;height:10px;border-radius:50%;background:#eab308;"></div><div style="width:10px;height:10px;border-radius:50%;background:#22c55e;"></div></div>
+                <button id="closePreviewBtn" style="background: none; border: none; color: #888; cursor: pointer;">✕</button>
+            </div>
+            <iframe id="previewFrame" style="flex: 1; border: none; background: white;"></iframe>
+        </div>
+
+    </div>
+    <script src="script.js"></script>
+    <style>@keyframes spin{to{transform:rotate(360deg)}} @keyframes pulse{0%,100%{opacity:0.5}50%{opacity:1}}</style>
+</body>
+</html>
